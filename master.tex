@@ -1,0 +1,38 @@
+\documentclass[10pt,letterpaper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel} % varias definiciones para el español (por ejemplo usa ''Índice'' en lugar de ''Contents'')
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a6paper}
+% ,
+%     total={210mm,297mm},
+%     left=20mm,
+%     right=20mm,
+%     top=20mm,
+%     bottom=20mm,
+%     bindingoffset=0mm
+
+\title{T\'itulo del libro}
+\author{Jorge Bautista}
+\begin{document}
+    \frontmatter
+    \maketitle
+    \include{preface}
+    \mainmatter
+    \include{ch1}
+    
+    
+    \appendix    
+    \chapter{First Appendix}
+
+    \backmatter
+    \chapter{\'Ultimos comentarios}
+    \nocite{*}
+\end{document}
+
+%\documentclass[a4paper,10pt]{book}
+%\usepackage[utf8]{inputenc}
+
+%\begin{document}
+
+%\end{document}
