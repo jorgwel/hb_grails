@@ -1,0 +1,72 @@
+\chapter{Pruebas}
+
+\section{Tipos de pruebas en Grails}
+Grails divide las pruebas en 2 tipos:
+\begin{description}
+ \item [Unitarias] La ejecuci\'on de estas pruebas es r\'apida, comparada con las de integraco\'on. La desventaja es que requieren de un uso extensivo de \textit{mocks} y \textit{stubs} para imitar el comportamiento de algunas clases y regresar valores predeterminados para la prueba. 
+ \item [Integraci\'on] Estas pruebas necesitan que la aplicaci\'on est\'e cargada por completo para poder realizarse, incluyendo la base de datos, por lo que son m\'as lentas. 
+\end{description}
+
+\section{Objetos impl\'icitos en clases de prueba}
+
+Dentro de las clases de prueba existen varios objetos con los que puedes contar para apoyarte durante su implantaci\'on:
+
+\begin{description}
+ \item [controller] Es una referencia al controller definido en la anotaci\'on \textit{@TestFor}, lo que permite el acceso a los m\'etodos del controller.
+ \item [params] Es una referencia a los par\'ametros enviados al controller para usarlos en su l\'ogica. Al llenar este objeto los \textit{params} ser\'an enviados al objeto \textit{controller} cuando se invoque alguno de sus m\'etodos.
+ \item [response] Una vez que alguno de los m\'etodos del \textit{controller} sea invocado, el objeto \textit{response} se llenar\'a con los detalles de la respuesta (estatus, texto de respuesta, headers, etc).
+\end{description}
+
+
+Algunas muestras de c\'odigo para realizar pruebas en Grails:
+
+\begin{itemize}
+
+    \item \textbf{Clase para probar un controller. Autogenerada junto con el controlador \textit{StoreController}}
+        \begin{lstlisting}[gobble=11]             
+            @TestFor(StoreController)
+            class StoreControllerTests {
+                void testSomething() {
+                    fail "Implement me"
+                }
+            }
+        \end{lstlisting}
+
+    \item \textbf{Clase para probar el texto de respuesta de un controller al ejecutar su m\'etodo \textmd{index()}:}
+        \begin{lstlisting}[gobble=11]             
+            @TestFor(StoreController)
+            class StoreControllerTests {
+                void testSomething() {
+                    controller.index()
+                    assert 'Welcome to the gTunes store!' == response.text
+                }
+            }        
+        \end{lstlisting}
+
+        
+
+\end{itemize}
+
+\section{Comandos \'utiles en el desarrollo de pruebas}
+Los resultados de la ejecuci\'on de alg\'un comando de pruebas generan archivos\footnote{Los resultados se generan en el folder test/reports} con los resultados en los formatos \textit{html, txt} y \textit{xml}.
+\begin{itemize}
+
+    \item \textbf{Comando que ejecuta todas las pruebas del sistema}
+        \begin{lstlisting}[gobble=11]             
+            grails test-app
+        \end{lstlisting}
+
+    \item \textbf{Clase para probar el texto de respuesta de un controller al ejecutar su m\'etodo \textmd{index()}:}
+        \begin{lstlisting}[gobble=11]             
+            @TestFor(StoreController)
+            class StoreControllerTests {
+                void testSomething() {
+                    controller.index()
+                    assert 'Welcome to the gTunes store!' == response.text
+                }
+            }        
+        \end{lstlisting}
+
+        
+
+\end{itemize}
