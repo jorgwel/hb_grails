@@ -1,0 +1,103 @@
+% \chapter{Arquitectura y comandos b\'asicos}
+\chapter{M\'etodos de renderizado}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=white, node distance=3cm,
+    minimum height=2em]
+
+    
+\begin{figure}[ht!]
+    \begin{tikzpicture}[node distance = 2cm, auto]
+
+        % Place nodes
+        \node [block] (init) {controllers};
+        \node [cloud, left of=init, node distance=5.1cm] (views) {views};
+        \node [cloud, right of=init, node distance=3.4cm] (services) {services};    
+        \node [cloud, below of=views] (views2) {views};
+    %     \node [block, below of=init] (identify) {identify candidate models};
+    %     \node [block, below of=identify] (evaluate) {evaluate candidate models};
+    %     \node [block, left of=evaluate, node distance=3cm] (update) {update model};
+    %     \node [decision, below of=evaluate] (decide) {is best candidate better?};
+    %     \node [block, below of=decide, node distance=3cm] (stop) {stop};
+
+        % Draw edges
+        \path [line] (views) -- node [auto] {1.-jquery, canjs, form} (init);
+    %     \path [line] (views) -- (views);
+        \path [line] (init) -- node [auto] {2.-invoke} (services);
+        \path [line] (init) -- node [auto] {3.-render: views, json, txt} (views2);
+        
+    %     \path [line] (init) -- (identify);
+    %     \path [line] (identify) -- (evaluate);
+    %     \path [line] (evaluate) -- (decide);
+    %     \path [line] (decide) -| node [near start] {yes} (update);
+    %     \path [line] (update) |- (identify);
+    %     \path [line] (decide) -- node {no}(stop);
+    %     \path [line,dashed] (expert) -- (init);
+    %     \path [line,dashed] (system) -- (init);
+    %     \path [line,dashed] (system) |- (evaluate);
+    \end{tikzpicture}
+    \caption{Flujo de datos b\'asico de Grails}
+\end{figure}
+
+
+% \begin{tikzpicture}[node distance = 2cm, auto]
+%     
+%     \node [block] (init) {initialize model};
+%     \node [cloud, left of=init] (expert) {expert};
+%     \node [cloud, right of=init] (system) {system};
+%     \node [block, below of=init] (identify) {identify candidate models};
+%     \node [block, below of=identify] (evaluate) {evaluate candidate models};
+%     \node [block, left of=evaluate, node distance=3cm] (update) {update model};
+%     \node [decision, below of=evaluate] (decide) {is best candidate better?};
+%     \node [block, below of=decide, node distance=3cm] (stop) {stop};
+%     
+%     \path [line] (init) -- (identify);
+%     \path [line] (identify) -- (evaluate);
+%     \path [line] (evaluate) -- (decide);
+%     \path [line] (decide) -| node [near start] {yes} (update);
+%     \path [line] (update) |- (identify);
+%     \path [line] (decide) -- node {no}(stop);
+%     \path [line,dashed] (expert) -- (init);
+%     \path [line,dashed] (system) -- (init);
+%     \path [line,dashed] (system) |- (evaluate);
+% \end{tikzpicture}
+El resultado enviado de los controllers a las vistas puede ir en varios formatos. Siempre se hace a trav\'es de la instrucci\'ion \textit{render}:
+\begin{itemize}
+
+    \item \textbf{Renderizar texto}    
+        \begin{lstlisting}[gobble=11] 
+            render 'Welcome to the gTunes store!'
+        \end{lstlisting}
+
+    \item \textbf{Solicitar ayuda de un comando}
+        \begin{lstlisting}[gobble=11]
+            grails help NOMBRE_DE_COMANDO
+        \end{lstlisting}
+
+    \item \textbf{Crear aplicaci\'on de Grails}
+        \begin{lstlisting}[gobble=11]
+            grails create-app NOMBRE_DE_APP
+        \end{lstlisting}
+
+
+    \item \textbf{Crear un controller + sus pruebas + sus vistas}
+        \begin{lstlisting}[gobble=11]
+            grails create-controller [PAQUETE]NOMBRE
+        \end{lstlisting}
+
+    \item \textbf{Ejecutar pruebas de la aplicaci\'on}
+        \begin{lstlisting}[gobble=11]
+            grails test-app
+        \end{lstlisting}
+
+    \item \textbf{Ejecutar la aplicaci\'on}
+        \begin{lstlisting}[gobble=11]
+            grails run-app
+        \end{lstlisting}
+        
+\end{itemize}

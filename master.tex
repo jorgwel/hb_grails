@@ -1,33 +1,67 @@
-\documentclass[10pt,letterpaper]{book}
+\documentclass[10pt,oneside]{book} %oneside es para eliminar las hojas en blanco entre cada capítulo
+\usepackage[pdftex]{graphicx}
+% letterpaper
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel} % varias definiciones para el español (por ejemplo usa ''Índice'' en lugar de ''Contents'')
 \usepackage{hyperref}
 \usepackage{geometry}
-\geometry{a6paper}
-% ,
-%     total={210mm,297mm},
-%     left=20mm,
-%     right=20mm,
-%     top=20mm,
-%     bottom=20mm,
-%     bindingoffset=0mm
+\usepackage{multicol}
+%Para mostrar c\'odigo fuente
+\usepackage{listings}
+% Libraries for diagrams
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usepackage{caption}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\lstset
+{%
+        %linewidth=\linewidth,  
+        breaklines=true,
+        tabsize=1, 
+        showstringspaces=false%      
+}
+%\usepackage{lstautogobble}
+%
+\usepackage{mdwlist}
+%\usepackage{enumitem}
+%\usepackage{ragged2e}
+%\addcontentsline{toc}{itemize}{Lista de informaci\'on}
+\geometry{
+    a5paper,
+%     a6paper,
+%     total={210mm,297mm},
+    left=20mm,
+    right=20mm,
+    top=20mm,
+    bottom=20mm,
+    bindingoffset=0mm
+}
 \title{T\'itulo del libro}
 \author{Jorge Bautista}
+
+
 \begin{document}
     \frontmatter
     \maketitle
+    %Prólogo del libro
     \include{preface}
+    
     \mainmatter
+    %Cap\'itulo 1: 'B\'asicos'
     \include{ch1}
-    
-    
+    \include{ch2}
+%     \backmatter
     \appendix    
-    \chapter{First Appendix}
-
-    \backmatter
-    \chapter{\'Ultimos comentarios}
-    \nocite{*}
+    \include{commands}
+    
+    \listoffigures
+    \listoftables
+    %\nocite{*}
+    \begin{thebibliography}{99}    
+        \bibitem{bib-name1} article-description1
+        \bibitem{bib-name2} article-description2
+    \end{thebibliography}
 \end{document}
 
 %\documentclass[a4paper,10pt]{book}
