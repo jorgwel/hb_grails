@@ -1,14 +1,6 @@
 % \chapter{Arquitectura y comandos b\'asicos}
 \chapter{M\'etodos de renderizado}
 
-% Define block styles
-\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
-    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
-    text width=5em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, -latex']
-\tikzstyle{cloud} = [draw, ellipse,fill=white, node distance=3cm,
-    minimum height=2em]
 
     
 \begin{figure}[ht!]
@@ -16,32 +8,23 @@
 
         % Place nodes
         \node [block] (init) {controllers};
-        \node [cloud, left of=init, node distance=5.1cm] (views) {views};
-        \node [cloud, right of=init, node distance=3.4cm] (services) {services};    
-        \node [cloud, below of=views] (views2) {views};
-    %     \node [block, below of=init] (identify) {identify candidate models};
-    %     \node [block, below of=identify] (evaluate) {evaluate candidate models};
-    %     \node [block, left of=evaluate, node distance=3cm] (update) {update model};
-    %     \node [decision, below of=evaluate] (decide) {is best candidate better?};
-    %     \node [block, below of=decide, node distance=3cm] (stop) {stop};
+        \node [cloud, above of=init, node distance=2.5cm] (urls) {UrlMappings \newline(optional)};
+        \node [cloud, left of=init, node distance=4.3cm] (views) {views};        
+        \node [cloud, right of=init, node distance=4.1cm] (services) {services};    
+        %\node [cloud, below of=views] (views2) {views};
+        \node [cloud, below of=services] (domains) {domains};
 
         % Draw edges
-        \path [line] (views) -- node [auto] {1.-jquery, canjs, form} (init);
+        \path [line] (views) -- node [auto] {1.1 jquery, form} (urls);
+        \path [line] (urls) -- node [auto] {1.2 (controlador y acci\'on decodificados)} (init);
     %     \path [line] (views) -- (views);
-        \path [line] (init) -- node [auto] {2.-invoke} (services);
-        \path [line] (init) -- node [auto] {3.-render response: views, json, txt} (views2);
+        \path [line] (init) -- node [auto] {2.1 invoke} (services);
+        \path [line] (init) -- node [auto] {4 html,json,txt} (views);
+        \path [line] (init) -- node [auto] {2.2 invoke} (domains);
+        \path [line] (services) -- node [auto] {3 invoke} (domains);
         
-    %     \path [line] (init) -- (identify);
-    %     \path [line] (identify) -- (evaluate);
-    %     \path [line] (evaluate) -- (decide);
-    %     \path [line] (decide) -| node [near start] {yes} (update);
-    %     \path [line] (update) |- (identify);
-    %     \path [line] (decide) -- node {no}(stop);
-    %     \path [line,dashed] (expert) -- (init);
-    %     \path [line,dashed] (system) -- (init);
-    %     \path [line,dashed] (system) |- (evaluate);
     \end{tikzpicture}
-    \caption{Flujo de datos b\'asico de Grails}
+    \caption{Artefactos de Grails funcionando}
 \end{figure}
 
 
