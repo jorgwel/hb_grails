@@ -1,0 +1,59 @@
+% \chapter{Arquitectura y comandos b\'asicos}
+\chapter{Comandos m\'as comunes}
+
+\begin{itemize}
+
+    \item \textbf{Consultar versi\'on de Grails}    
+        \\Devolver\'a una l\'inea de texto describiendo la versi\'on de grails.
+        \begin{lstlisting}[gobble=11] 
+            grails -version
+        \end{lstlisting}
+        
+
+    \item \textbf{Solicitar ayuda de un comando}
+        \\Devolver\'a informaci\'on (no tan detallada) sobre el comando y sus argumentos.
+        \begin{lstlisting}[gobble=11]
+            grails help NOMBRE_DE_COMANDO
+        \end{lstlisting}
+        
+
+    \item \textbf{Crear aplicaci\'on de Grails}
+        \\Genera toda la estructura de archivos de una aplicaci\'on de Grails.
+        \begin{lstlisting}[gobble=11]
+            grails create-app NOMBRE_DE_APP
+        \end{lstlisting}
+        
+
+    \item \textbf{Crear un controller + sus pruebas + sus vistas}
+        \\Genera un controlador de Grails as\'i como archivos de prueba y \textit{gsp's}. Tanto los archivos de prueba como los \textit{gsp's} se generan vac\'ios.
+        \begin{lstlisting}[gobble=11]
+            grails create-controller [PAQUETE]NOMBRE
+        \end{lstlisting}
+        
+
+    \item \textbf{Ejecutar pruebas de la aplicaci\'on}
+        \\Ejecuta todas las pruebas de la aplicaci\'on, poniendo los resultados en \textit{test/reports}
+        \begin{lstlisting}[gobble=11]
+            grails test-app
+        \end{lstlisting}
+        
+
+    \item \textbf{Ejecutar la aplicaci\'on}
+        \\Ejecuta la aplicaci\'on. Si ENVIRONMENT no se especifica, el default a usar ser\'a el de desarrollo (development).
+        \begin{lstlisting}[gobble=11]
+            grails [ENVIRONMENT] run-app
+        \end{lstlisting}
+        
+        
+    \item \textbf{Crear clase de dominio}
+        \\Se encarga de crear una nueva clase de dominio y adem\'as genera un archivo donde pueden implantarse sus pruebas.
+        \begin{lstlisting}[gobble=11]
+            grails create-domain-class [PAQUETE]NOMBRE
+        \end{lstlisting}        
+        
+    \item \textbf{Abrir reporte de pruebas}
+        \\Se encarga de abrir el reporte con los resultados de las pruebas con formato HTML en el navegador predeterminado.
+        \begin{lstlisting}[gobble=11]
+            grails open test-report
+        \end{lstlisting}            
+\end{itemize}
