@@ -1,7 +1,7 @@
 % \chapter{Arquitectura y comandos b\'asicos}
 \chapter{Introducci\'on a Grails}
 \section{Arquitectura}
-Grails envuelve a muchas tecnolog\'ias relacionados con \textit{java}, abstrayendo su complejidad al proporcionarnos configuraciones predeterminadas que cubren los casos de uso m\'as comunes. Estas configuraciones pueden ahorrarnos d\'ias o semanas de trabajo debido a la integraci\'on con otras tecnolog\'ias.
+Grails envuelve a muchas tecnolog\'ias relacionados con \textit{java}, abstrayendo su complejidad al proporcionarnos configuraciones predeterminadas que cubren los casos de uso m\'as comunes. Estas configuraciones pueden ahorrarnos d\'ias o semanas de trabajo gracias a la integraci\'on con otras tecnolog\'ias.
 
 Aqu\'i se presentan las tecnolog\'ias principales sobre las que se Grails est\'a montado:
 %En este cap\'itulo se listan las tecnolog\'ias que usa grails y comandos b\'asicos para comenzar a usarlo. 
@@ -62,10 +62,13 @@ Debido a la gran simplicidad de Grails, es com\'un que los desarrolladores escri
 
 \begin{itemize}
  \item Modularizaci\'on de c\'odigo
- \item Son transaccionales de forma predeterminada, es decir, si hay una operaci\'on a base de datos que necesite de varios pasos para completarse, y alguno de estos pasos falla, Grails ejecuta un rollback en la base de datos.
+ \item Son transaccionales de forma predeterminada, es decir, si hay una operaci\'on a base de datos que necesite de varios pasos para completarse, y alguno de estos pasos falla, Grails ejecuta un rollback a todos los cambios.
 \end{itemize}
 
 
+
+\subsection{UrlMappings}
+Es un archivo donde pueden describirse las \textit{URL's} que el sistema ofrece para ser accesibles al cliente. El \textit{UrlMappings} puede o no usarse, ya que las convenciones de Grails permiten que existan \textit{URL's} implicitas que podemos accesar aún si no han sido agregadas a este archivo.
 
 \begin{figure}[ht!]
     \begin{tikzpicture}[node distance = 2cm, auto]
